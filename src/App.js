@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        ayshimz.github.io
+        Hi, I'm Aya
       </header>
     </div>
   );
