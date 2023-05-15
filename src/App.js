@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { Landing } from './pages/Landing';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        Hi, I'm Aya
-      </header>
+      <Landing />
     </div>
   );
 }
