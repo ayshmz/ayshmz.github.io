@@ -14,7 +14,13 @@ export const Landing = () => {
 
   return (
     <div className='front-loading'>
-      {showLanding ? <Sidebar /> : <FrontPage />}
+      {showLanding ? (
+        <div>
+          <Sidebar />
+        </div>
+      ) : (
+        <FrontPage />
+      )}
     </div>
   );
 };

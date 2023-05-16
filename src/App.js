@@ -1,6 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import { Landing } from './pages/Landing';
+import './App.css';
 
 const App = () => {
   return (
@@ -8,6 +8,6 @@ const App = () => {
       <Landing />
     </div>
   );
-}
+};
 
 export default App;
