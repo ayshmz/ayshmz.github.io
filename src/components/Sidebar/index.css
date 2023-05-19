@@ -1,0 +1,30 @@
+:root {
+  --x: 0.5;
+  --y: 0.5;
+}
+
+.bookshelf {
+  width: 20%;
+}
+
+.linklabel {
+  font-family: monospace;
+  font-size: 24px;
+  padding-top: 8px;
+}
+
+.topshelf {
+  place-content: center;
+  align-items: center;
+  padding-left: 36px;
+}
+
+.lefteye {
+  cx: calc(43.522 + 4 * var(--x));
+  cy: calc(101.44 + 5 * var(--y));
+}
+
+.righteye {
+  cx: calc(69.747 + 4 * var(--x));
+  cy: calc(101.05 + 5 * var(--y));
+}
