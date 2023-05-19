@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="500mm" height="200mm" version="1.1" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+<svg width="1000px" height="400px" version="1.1" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
  <g fill-opacity="0">
   <rect x="14.326" y="85.443" width="70.774" height="43.059" ry="12.041" opacity=".86" stroke-width=".19811"/>
   <rect x="26.121" y="92.293" width="34.48" height="33.273" ry="12.041" opacity=".86" stroke-width=".19811"/>
@@ -41,10 +41,13 @@
   <rect x="153.36" y="5.1862" width="205.97" height="114.84" rx="11.484" ry="5.2572" fill="#e3dbdb" fill-rule="evenodd" stroke-width="1.965"/>
  </g>
  <rect x="160.03" y="11.854" width="191.99" height="102.24" rx="11.49" ry="5.3345" fill="#28170b" fill-rule="evenodd" stroke-width=".2666"/>
- <rect x="411.84" y="115.92" width="57.595" height="27.964" ry="5.7615" fill="#2ca02c" stroke="#000" stroke-width=".41406"/>
- <rect x="413.01" y="118.81" width="55.191" height="23.229" ry="6.1048" fill="#93ac9d" stroke-width=".076879"/>
- <rect x="414.25" y="119.21" width="53.104" height="21.922" ry="5.7615" fill="#80ffb3" stroke-width=".07326"/>
- <rect x="436.46" y="114.33" width="8.503" height="3.3013" ry=".86767" fill="#002b22" stroke-width=".011376"/>
- <ellipse className="lefteye" cx="44.022" cy="102.44" rx="3.6103" ry="2.8865" fill-rule="evenodd" stroke-width=".21247"/>
- <ellipse className="righteye" cx="69.747" cy="102.05" rx="3.6103" ry="2.8865" fill-rule="evenodd" stroke-width=".21247"/>
+ <rect x="411.9" y="98.292" width="57.481" height="45.536" ry="9.3818" fill="#2ca02c" stroke="#000" stroke-width=".41406"/>
+ <rect x="414.82" y="100.9" width="51.895" height="41.141" ry="10.812" fill="#e6e6e6" stroke-width=".099211"/>
+ <g fill-rule="evenodd">
+  <ellipse className="lefteye" cx="44.022" cy="102.44" rx="3.6103" ry="2.8865" stroke-width=".21247"/>
+  <ellipse className="righteye" cx="69.747" cy="102.05" rx="3.6103" ry="2.8865" stroke-width=".21247"/>
+  <rect className="longhand" x="439.07" y="101.86" width="3.2993" height="20.382" ry="1.0727" fill="#333" stroke-width=".55926"/>
+  <rect className="shorthand" x="440.25" y="120.25" width="14.284" height="2.9476" ry=".82033" fill="#00f" stroke-width=".23908"/>
+  <rect x="424.06" y="96.1" width="34.95" height="3.6709" ry=".4919" stroke-width=".343"/>
+ </g>
 </svg>

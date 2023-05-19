@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.7a44b403.css",
-    "main.js": "/static/js/main.1db19319.js",
-    "static/media/bookshelf.svg": "/static/media/bookshelf.0f63ca2a798214266094eb31bc2878c3.svg",
-    "static/media/desk.svg": "/static/media/desk.54d9fe54fc57bfd114df7270d4444fd0.svg",
-    "static/media/smile_aya.svg": "/static/media/smile_aya.87e418c9b3d3f1f07f2caaee456b90a3.svg",
-    "static/media/slight_aya.svg": "/static/media/slight_aya.b1a3b9584eafe4a8e981c2886ed89a26.svg",
+    "main.css": "/static/css/main.13b50ddb.css",
+    "main.js": "/static/js/main.d9db0c4e.js",
+    "static/media/brick-wall-painted-white.jpg": "/static/media/brick-wall-painted-white.49dbc8942c18e33cdc48.jpg",
+    "static/media/bookshelf.svg": "/static/media/bookshelf.d77f7ce268fd6d717d22c9d5d536fa2f.svg",
+    "static/media/newdesk.svg": "/static/media/newdesk.1a5ee8a80ef8001ca7290069c730c4ab.svg",
+    "static/media/smile_aya.svg": "/static/media/smile_aya.a9de9cc776e6c01e1ed7448e1b1b273f.svg",
+    "static/media/slight_aya.svg": "/static/media/slight_aya.03213f94f60a7ca319a64375ee8c41b9.svg",
     "static/media/lightbulb.svg": "/static/media/lightbulb.2a445425f4ae9f7ebb1b1890f299d71a.svg",
     "index.html": "/index.html",
     "static/media/greylightbulb.svg": "/static/media/greylightbulb.3b7f7488553ac0fc7224e813649fafe5.svg",
-    "main.7a44b403.css.map": "/static/css/main.7a44b403.css.map",
-    "main.1db19319.js.map": "/static/js/main.1db19319.js.map"
+    "main.13b50ddb.css.map": "/static/css/main.13b50ddb.css.map",
+    "main.d9db0c4e.js.map": "/static/js/main.d9db0c4e.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a44b403.css",
-    "static/js/main.1db19319.js"
+    "static/css/main.13b50ddb.css",
+    "static/js/main.d9db0c4e.js"
   ]
 }
