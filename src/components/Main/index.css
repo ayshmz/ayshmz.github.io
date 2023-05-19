@@ -1,22 +1,18 @@
 :root {
   --x: 0.5;
   --y: 0.5;
-}
-
-.bookshelf {
-  width: 20%;
+  --longhand: 0deg;
+  --shorthand: 0deg;
 }
 
 .linklabel {
   font-family: monospace;
   font-size: 24px;
-  padding-top: 8px;
 }
 
 .topshelf {
   place-content: center;
-  align-items: center;
-  padding-left: 36px;
+  align-items: end;
 }
 
 .lefteye {
@@ -27,4 +23,14 @@
 .righteye {
   cx: calc(69.747 + 4 * var(--x));
   cy: calc(101.05 + 5 * var(--y));
+}
+
+.longhand {
+  transform: rotate(var(--longhand));
+  transform-origin: 441.05px 121.05px;
+}
+
+.shorthand {
+  transform: rotate(var(--shorthand));
+  transform-origin: 441.05px 121.05px;
 }

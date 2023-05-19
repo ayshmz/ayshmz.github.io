@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FrontPage } from '../../components/FrontPage';
-import { Sidebar } from '../../components/Sidebar';
+import { Main } from '../../components/Main';
 
 export const Landing = () => {
   const [showLanding, setShowLanding] = useState(false);
@@ -16,7 +16,7 @@ export const Landing = () => {
     <div className='front-loading'>
       {showLanding ? (
         <div>
-          <Sidebar />
+          <Main />
         </div>
       ) : (
         <FrontPage />
