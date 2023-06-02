@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.13b50ddb.css",
-    "main.js": "/static/js/main.d9db0c4e.js",
+    "main.css": "/static/css/main.97024413.css",
+    "main.js": "/static/js/main.45084aff.js",
     "static/media/brick-wall-painted-white.jpg": "/static/media/brick-wall-painted-white.49dbc8942c18e33cdc48.jpg",
     "static/media/bookshelf.svg": "/static/media/bookshelf.d77f7ce268fd6d717d22c9d5d536fa2f.svg",
     "static/media/newdesk.svg": "/static/media/newdesk.1a5ee8a80ef8001ca7290069c730c4ab.svg",
@@ -10,11 +10,11 @@
     "static/media/lightbulb.svg": "/static/media/lightbulb.2a445425f4ae9f7ebb1b1890f299d71a.svg",
     "index.html": "/index.html",
     "static/media/greylightbulb.svg": "/static/media/greylightbulb.3b7f7488553ac0fc7224e813649fafe5.svg",
-    "main.13b50ddb.css.map": "/static/css/main.13b50ddb.css.map",
-    "main.d9db0c4e.js.map": "/static/js/main.d9db0c4e.js.map"
+    "main.97024413.css.map": "/static/css/main.97024413.css.map",
+    "main.45084aff.js.map": "/static/js/main.45084aff.js.map"
   },
   "entrypoints": [
-    "static/css/main.13b50ddb.css",
-    "static/js/main.d9db0c4e.js"
+    "static/css/main.97024413.css",
+    "static/js/main.45084aff.js"
   ]
 }
