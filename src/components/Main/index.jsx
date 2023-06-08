@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import {
-  // Drawer,
-  // Box,
-  // List,
-  // ListItem,
-  // ListItemButton,
-  // ListItemIcon,
-  // ListItemText,
+  Drawer,
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Grid,
 } from '@mui/material';
-// import { Home, Face4, AccountTree } from '@mui/icons-material';
+import { Home, Face4, AccountTree } from '@mui/icons-material';
 import { ReactComponent as BookShelfSVG } from '../../assets/bookshelf.svg';
 import { ReactComponent as SlightSmile } from '../../assets/slight_aya.svg';
 import { ReactComponent as SmileSVG } from '../../assets/smile_aya.svg';
@@ -18,39 +18,48 @@ import { ReactComponent as DeskSVG } from '../../assets/newdesk.svg';
 import { ReactComponent as LightSVG } from '../../assets/lightbulb.svg';
 import { ReactComponent as NoLightSVG } from '../../assets/greylightbulb.svg';
 import brickwall from '../../assets/brick-wall-painted-white.jpg';
-
 import './index.css';
 
-// const navBarIcons = {
-//   Home: <Home />,
-//   'About Me': <Face4 />,
-//   Projects: <AccountTree />,
-// };
+const navBarIcons = {
+  Home: <Home />,
+  'About Me': <Face4 />,
+  Projects: <AccountTree />,
+};
+
+const compText = [
+  'Hello! My name is Aya!',
+  'Please feel free to look around :)',
+  'The main menu can be accessed by turning off the lamp.',
+  'Projects I worked/am working on is in the bookshelf.',
+  'Thanks for stopping by!',
+  'Please click again to repeat.',
+];
 
 export const Main = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [onPicture, setOnPicture] = useState(false);
   const [isLight, setIsLight] = useState(true);
+  const [compCounter, setCompCounter] = useState(0);
 
-  // const list = (
-  //   <Box
-  //     sx={{ width: 250 }}
-  //     role='presentation'
-  //     onClick={() => setIsOpen(!isOpen)}
-  //     onKeyDown={() => setIsOpen(!isOpen)}
-  //   >
-  //     <List>
-  //       {['Home', 'About Me', 'Projects'].map((text, index) => (
-  //         <ListItem key={index} disablePadding>
-  //           <ListItemButton>
-  //             <ListItemIcon>{navBarIcons[text]}</ListItemIcon>
-  //             <ListItemText primary={text} />
-  //           </ListItemButton>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //   </Box>
-  // );
+  const menulist = (
+    <Box
+      sx={{ width: 250 }}
+      role='presentation'
+      onClick={() => setIsOpen(!isOpen)}
+      onKeyDown={() => setIsOpen(!isOpen)}
+    >
+      <List>
+        {['Home', 'About Me', 'Projects'].map((text, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>{navBarIcons[text]}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
   const pos = { x: 0, y: 0 };
   const saveCursorPosition = (x, y) => {
@@ -90,7 +99,7 @@ export const Main = () => {
         container
         spacing={0}
         className='topshelf'
-        justifyContent='space-evenly'
+        justifyContent='center'
         alignItems='flex-end'
       >
         <Grid item xs={4}>
@@ -117,9 +126,21 @@ export const Main = () => {
         </Grid>
         <Grid item xs={4}>
           {isLight ? (
-            <LightSVG height='300px' onClick={() => setIsLight(!isLight)} />
+            <LightSVG
+              height='300px'
+              onClick={() => {
+                setIsLight(!isLight);
+                setIsOpen(!isOpen);
+              }}
+            />
           ) : (
-            <NoLightSVG height='300px' onClick={() => setIsLight(!isLight)} />
+            <NoLightSVG
+              height='300px'
+              onClick={() => {
+                setIsLight(!isLight);
+                setIsOpen(!isOpen);
+              }}
+            />
           )}
         </Grid>
         <Grid item xs={4}>
@@ -136,9 +157,19 @@ export const Main = () => {
       <Grid container spacing={0} className='desk' justifyContent='center'>
         <DeskSVG />
       </Grid>
-      {/* <Drawer anchor='left' open={isOpen} onClose={() => setIsOpen(false)}>
-        {list}
-      </Drawer> */}
+      <div className='comptext' onClick={() => setCompCounter(compCounter + 1)}>
+        {compText[compCounter % 6]}
+      </div>
+      <Drawer
+        anchor='left'
+        open={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          setIsLight(true);
+        }}
+      >
+        {menulist}
+      </Drawer>
     </div>
   );
 };

@@ -34,3 +34,14 @@
   transform: rotate(var(--shorthand));
   transform-origin: 441.05px 121.05px;
 }
+
+.comptext {
+  z-index: 1;
+  font-family: monospace;
+  margin-top: -40vh;
+  font-size: 2vh;
+  color: aliceblue;
+  text-align: start;
+  width: 300px;
+  margin-left: 40vw;
+}
