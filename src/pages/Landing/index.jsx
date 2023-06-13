@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { FrontPage } from '../../components/FrontPage';
-import { Main } from '../../components/Main';
+import { FrontPage } from '../FrontPage';
+import { Main } from '../Main';
 
-export const Landing = () => {
+const Landing = () => {
   const [showLanding, setShowLanding] = useState(false);
-  console.log(showLanding);
 
   useEffect(() => {
-    setTimeout(() => {
+    if (!window.sessionStorage.getItem('visited')) {
+      setTimeout(() => {
+        setShowLanding(true);
+      }, 3000);
+    } else {
       setShowLanding(true);
-    }, 3000);
+    }
   }, []);
 
   return (
@@ -24,3 +27,5 @@ export const Landing = () => {
     </div>
   );
 };
+
+export default Landing;

@@ -11,6 +11,7 @@ import {
   Grid,
 } from '@mui/material';
 import { Home, Face4, AccountTree } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BookShelfSVG } from '../../assets/bookshelf.svg';
 import { ReactComponent as SlightSmile } from '../../assets/slight_aya.svg';
 import { ReactComponent as SmileSVG } from '../../assets/smile_aya.svg';
@@ -41,6 +42,8 @@ export const Main = () => {
   const [onPicture, setOnPicture] = useState(false);
   const [isLight, setIsLight] = useState(true);
   const [compCounter, setCompCounter] = useState(0);
+  window.sessionStorage.setItem('visited', true);
+  const navigate = useNavigate();
 
   const menulist = (
     <Box
@@ -94,6 +97,7 @@ export const Main = () => {
         backgroundRepeat: 'repeat',
         backgroundSize: 'contain',
         minHeight: '100vh',
+        textAlign: 'center',
       }}
     >
       <Grid
@@ -111,12 +115,14 @@ export const Main = () => {
                   style={{ width: '150px', height: '160px' }}
                   onMouseEnter={() => setOnPicture(true)}
                   onMouseLeave={() => setOnPicture(false)}
+                  onClick={() => navigate('/about')}
                 />
               ) : (
                 <SlightSmile
                   style={{ width: '150px', height: '160px' }}
                   onMouseEnter={() => setOnPicture(true)}
                   onMouseLeave={() => setOnPicture(false)}
+                  onClick={() => navigate('/about')}
                 />
               )}
             </Grid>
@@ -152,7 +158,11 @@ export const Main = () => {
         <Grid item sm={4}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <BookShelfSVG width='300px' height='200px' />
+              <BookShelfSVG
+                width='300px'
+                height='200px'
+                onClick={() => navigate('/projects')}
+              />
             </Grid>
             <Grid
               item
@@ -170,6 +180,17 @@ export const Main = () => {
           <DeskSVG style={{ width: '100%' }} />
         </Grid>
         <Grid
+          display={{ xs: 'none', sm: 'block' }}
+          width={{ xs: '200px', md: '300px' }}
+        >
+          <div
+            className='comptext'
+            onClick={() => setCompCounter(compCounter + 1)}
+          >
+            {compText[compCounter % 6]}
+          </div>
+        </Grid>
+        <Grid
           item
           sm={12}
           display={{ xs: 'block', sm: 'none' }}
@@ -180,14 +201,6 @@ export const Main = () => {
             Cats
           </Grid>
         </Grid>
-      </Grid>
-      <Grid display={{ xs: 'none', sm: 'block' }}>
-        <div
-          className='comptext'
-          onClick={() => setCompCounter(compCounter + 1)}
-        >
-          {compText[compCounter % 6]}
-        </div>
       </Grid>
       <Drawer
         anchor='left'
