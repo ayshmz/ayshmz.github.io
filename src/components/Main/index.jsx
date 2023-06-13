@@ -15,6 +15,7 @@ import { ReactComponent as BookShelfSVG } from '../../assets/bookshelf.svg';
 import { ReactComponent as SlightSmile } from '../../assets/slight_aya.svg';
 import { ReactComponent as SmileSVG } from '../../assets/smile_aya.svg';
 import { ReactComponent as DeskSVG } from '../../assets/newdesk.svg';
+import { ReactComponent as CatSVG } from '../../assets/cat.svg';
 import { ReactComponent as LightSVG } from '../../assets/lightbulb.svg';
 import { ReactComponent as NoLightSVG } from '../../assets/greylightbulb.svg';
 import brickwall from '../../assets/brick-wall-painted-white.jpg';
@@ -102,29 +103,34 @@ export const Main = () => {
         justifyContent='center'
         alignItems='flex-end'
       >
-        <Grid item xs={4}>
+        <Grid item sm={4}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
               {onPicture ? (
                 <SmileSVG
-                  style={{ width: '150px' }}
+                  style={{ width: '150px', height: '160px' }}
                   onMouseEnter={() => setOnPicture(true)}
                   onMouseLeave={() => setOnPicture(false)}
                 />
               ) : (
                 <SlightSmile
-                  style={{ width: '150px' }}
+                  style={{ width: '150px', height: '160px' }}
                   onMouseEnter={() => setOnPicture(true)}
                   onMouseLeave={() => setOnPicture(false)}
                 />
               )}
             </Grid>
-            <Grid item xs={12} className='linklabel'>
+            <Grid
+              item
+              xs={12}
+              className='linklabel'
+              paddingBottom={{ xs: '56px', sm: '12px' }}
+            >
               About Me
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item sm={4} display={{ xs: 'none', sm: 'block' }}>
           {isLight ? (
             <LightSVG
               height='300px'
@@ -143,23 +149,46 @@ export const Main = () => {
             />
           )}
         </Grid>
-        <Grid item xs={4}>
-          <Grid container spacing={4}>
+        <Grid item sm={4}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
               <BookShelfSVG width='300px' height='200px' />
             </Grid>
-            <Grid item xs={12} className='linklabel'>
+            <Grid
+              item
+              xs={12}
+              className='linklabel'
+              paddingBottom={{ xs: '56px', sm: '12px' }}
+            >
               Projects
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Grid container spacing={0} className='desk' justifyContent='center'>
-        <DeskSVG />
+        <Grid item sm={12} display={{ xs: 'none', sm: 'block' }}>
+          <DeskSVG style={{ width: '100%' }} />
+        </Grid>
+        <Grid
+          item
+          sm={12}
+          display={{ xs: 'block', sm: 'none' }}
+          className='cat'
+        >
+          <CatSVG style={{ width: '150px', height: '160px' }} />
+          <Grid item xs={12} className='linklabel'>
+            Cats
+          </Grid>
+        </Grid>
       </Grid>
-      <div className='comptext' onClick={() => setCompCounter(compCounter + 1)}>
-        {compText[compCounter % 6]}
-      </div>
+      <Grid display={{ xs: 'none', sm: 'block' }}>
+        <div
+          className='comptext'
+          onClick={() => setCompCounter(compCounter + 1)}
+        >
+          {compText[compCounter % 6]}
+        </div>
+      </Grid>
       <Drawer
         anchor='left'
         open={isOpen}

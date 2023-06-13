@@ -8,6 +8,7 @@
 .linklabel {
   font-family: monospace;
   font-size: 24px;
+  padding-top: 0px;
 }
 
 .topshelf {
@@ -23,6 +24,16 @@
 .righteye {
   cx: calc(69.747 + 4 * var(--x));
   cy: calc(101.05 + 5 * var(--y));
+}
+
+.lefteyecat {
+  cx: calc(17.905 + 3 * var(--x));
+  cy: calc(17.121 + 5 * var(--y));
+}
+
+.righteyecat {
+  cx: calc(43.905 + 3 * var(--x));
+  cy: calc(17.121 + 5 * var(--y));
 }
 
 .longhand {
