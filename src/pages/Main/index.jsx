@@ -28,6 +28,12 @@ const navBarIcons = {
   Projects: <AccountTree />,
 };
 
+const navBarLinks = {
+  Home: '/',
+  'About Me': '/about',
+  Projects: '/projects',
+};
+
 const compText = [
   'Hello! My name is Aya!',
   'Please feel free to look around :)',
@@ -55,7 +61,7 @@ export const Main = () => {
       <List>
         {['Home', 'About Me', 'Projects'].map((text, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate(navBarLinks[text])}>
               <ListItemIcon>{navBarIcons[text]}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
