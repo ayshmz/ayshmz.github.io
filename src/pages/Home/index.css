@@ -1,0 +1,101 @@
+:root {
+  --x: 0.5;
+  --y: 0.5;
+  --longhand: 0deg;
+  --shorthand: 0deg;
+}
+
+.linklabel {
+  font-family: monospace;
+  font-size: 18px;
+  padding-top: 0px;
+}
+
+.topshelf {
+  place-content: center;
+  align-items: end;
+}
+
+.lefteyecat {
+  cx: calc(18.905 + 3 * var(--x));
+  cy: calc(20.121 + 5 * var(--y));
+}
+
+.righteyecat {
+  cx: calc(44.905 + 3 * var(--x));
+  cy: calc(20.09 + 5 * var(--y));
+}
+
+.lefteyeruncat {
+  cx: calc(-70.905 + -8 * var(--x));
+  cy: calc(18.121 + 7 * var(--y));
+}
+
+.righteyeruncat {
+  cx: calc(-44.905 + -8 * var(--x));
+  cy: calc(18.09 + 7 * var(--y));
+}
+
+.longhand {
+  transform: rotate(var(--longhand));
+  transform-origin: 441.05px 121.05px;
+}
+
+.shorthand {
+  transform: rotate(var(--shorthand));
+  transform-origin: 441.05px 121.05px;
+}
+
+.comptext {
+  z-index: 1;
+  font-family: monospace;
+  margin-top: -40vh;
+  font-size: 2vh;
+  color: aliceblue;
+  text-align: start;
+}
+
+.sparkly {
+  color: 'blue';
+  display: 'inline';
+}
+
+.role:hover {
+  animation: rainbow-text 10s infinite;
+}
+
+@keyframes rainbow-text {
+  0% {
+    color: #e87d7d;
+  }
+  10% {
+    color: #e8bd7d;
+  }
+  20% {
+    color: #d3e87d;
+  }
+  30% {
+    color: #92e87d;
+  }
+  40% {
+    color: #7de8a8;
+  }
+  50% {
+    color: #7de8e8;
+  }
+  60% {
+    color: #7da8e8;
+  }
+  70% {
+    color: #927de8;
+  }
+  80% {
+    color: #d37de8;
+  }
+  90% {
+    color: #e87dbd;
+  }
+  100% {
+    color: #e87d7d;
+  }
+}

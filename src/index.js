@@ -4,11 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutMe from './pages/AboutMe';
 import Projects from './pages/Projects';
 import Landing from './pages/Landing';
+import Home from './pages/Home';
 import './index.css';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/v1',
     element: <Landing />,
     children: [],
   },
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: '/about',
     element: <AboutMe />,
+    children: [],
+  },
+  {
+    path: '/',
+    element: <Home />,
     children: [],
   },
 ]);
