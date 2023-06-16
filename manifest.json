@@ -3,12 +3,7 @@
   "name": "Ayshmz GitHub Website powered by Create React App",
   "icons": [
     {
-      "src": "github-mark.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "github-mark-white.png",
+      "src": "cat.png",
       "type": "image/png",
       "sizes": "192x192"
     }
