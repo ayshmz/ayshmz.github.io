@@ -33,7 +33,7 @@ export const experienceInfo = [
     employer: 'Liberty Mutual Insurance',
     tech: 'JavaScript, React, NodeJS, Express, MongoDB, Git, AWS, Python, Git, Kubernetes, Splunk, Datadog, Jenkins, Bamboo',
     description:
-      'Worked with Data Scientists to predict and assist customer choice using machine learning models and AB Tested model on production',
+      'Worked with data scientists to predict and assist customer choice using machine learning models and AB Tested model on production',
   },
   {
     start: '2018',

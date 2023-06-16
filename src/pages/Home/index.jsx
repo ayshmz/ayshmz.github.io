@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
-import { Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import lax from 'lax.js';
-import { ExperienceItem } from '../../components/experienceItem';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import SendIcon from '@mui/icons-material/Send';
 import { ReactComponent as CatSVG } from '../../assets/cat.svg';
 import { ReactComponent as CatRunSVG } from '../../assets/cat_run.svg';
-import { aboutMeText, experienceInfo, projects } from './info';
-import { ProjectCard } from '../../components/projectCard';
+import { AboutMe, Experiences, Projects } from '../../components/aboutme';
+import { ExperienceToolTip } from '../../components/experienceTooltip';
+import { ChatBox } from '../../components/chatbox';
+import { leftCatAction, runCatAction } from './catActions';
+import { InputAdornment } from '@mui/material';
 import './index.css';
 
 const Home = () => {
+  const [text, setText] = useState('Hello!');
+  const [showChat, setShowChat] = useState(false);
+  const [hasBeenOpened, setHasBeenOpened] = useState(false);
+
+  console.log(text);
   const pos = { x: 0, y: 0 };
   const saveCursorPosition = (x, y) => {
     pos.x = (x / window.innerWidth).toFixed(2);
@@ -25,36 +34,8 @@ const Home = () => {
     lax.addDriver('scrollY', function () {
       return window.scrollY;
     });
-    lax.addElements('.leftcat', {
-      scrollY: {
-        translateX: [
-          ['elInY', 'elOutY'],
-          [4100, -50],
-          {
-            inertia: 10,
-          },
-        ],
-      },
-    });
-    lax.addElements('.runcat', {
-      scrollY: {
-        translateX: [
-          {
-            500: [],
-            900: ['elInY', 'elOutY'],
-            1400: ['elInY', 'elOutY'],
-          },
-          {
-            500: [],
-            900: [-800, 1000],
-            1400: [-600, 1700],
-          },
-          {
-            inertia: 10,
-          },
-        ],
-      },
-    });
+    lax.addElements('.leftcat', leftCatAction);
+    lax.addElements('.runcat', runCatAction);
   }, []);
 
   return (
@@ -70,24 +51,65 @@ const Home = () => {
           />
         </Grid>
         <Grid item xs={9} alignSelf={'center'}>
-          <div
-            style={{
-              fontSize: '5.0vw',
-              lineHeight: '5.5vw',
-              fontFamily: 'Inconsolata',
-            }}
-          >
-            {aboutMeText}
-          </div>
+          <AboutMe />
         </Grid>
-        <Grid item xs={11} alignSelf={'center'}>
-          <CatRunSVG
-            className='runcat'
-            style={{
-              width: '10.0vw',
-              height: '10.0vw',
-            }}
-          />
+        <Grid item xs={11} sx={{ display: 'flex' }} alignSelf={'center'}>
+          <ExperienceToolTip
+            sx={{ width: 'fit-content' }}
+            arrow
+            placement='left'
+            title={
+              <React.Fragment>
+                {!hasBeenOpened && !showChat && (
+                  <>
+                    <div>Hi I&apos;m ChestnutBot! Start a chat with me!</div>
+                    <TextField
+                      sx={{ width: '80%', margin: '4px' }}
+                      value={text}
+                      onChange={(event) => setText(event.target.value)}
+                      onSubmit={() => {
+                        setShowChat(true);
+                        setText('');
+                        setHasBeenOpened(true);
+                      }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <SendIcon
+                              onClick={() => {
+                                setShowChat(true);
+                                setText('');
+                                setHasBeenOpened(true);
+                              }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </>
+                )}
+                {hasBeenOpened && !showChat && (
+                  <div onClick={() => setShowChat(true)}>
+                    Click me to open the chat again!
+                  </div>
+                )}
+                {showChat && <div>Have fun!</div>}
+              </React.Fragment>
+            }
+          >
+            <CatRunSVG
+              className='runcat'
+              onClick={() => {
+                if (hasBeenOpened) {
+                  setShowChat(true);
+                }
+              }}
+              style={{
+                width: '10.0vw',
+                height: '10.0vw',
+              }}
+            />
+          </ExperienceToolTip>
         </Grid>
         <Grid
           item
@@ -101,25 +123,13 @@ const Home = () => {
           <strong>My work journey:</strong>
         </Grid>
         <Grid item xs={10} alignSelf={'center'}>
-          <Grid
-            container
-            rowSpacing={3}
-            style={{
-              fontSize: '2.0vw',
-              lineHeight: '3.0vw',
-              fontFamily: 'Inconsolata',
-            }}
-          >
-            {experienceInfo.map((info, index) => (
-              <ExperienceItem {...info} key={`experience-${index}`} />
-            ))}
-          </Grid>
+          <Experiences />
         </Grid>
         <Grid
           item
           xs={10}
           style={{
-            marginTop: '5vw',
+            marginTop: '1.5vw',
             fontSize: '2.25vw',
             lineHeight: '3.5vw',
             fontFamily: 'Inconsolata',
@@ -127,19 +137,8 @@ const Home = () => {
         >
           <strong>Projects:</strong>
         </Grid>
-        <Grid item xs={12}>
-          <Grid
-            container
-            direction='row'
-            justifyContent='center'
-            alignItems='center'
-            rowSpacing={2}
-            columnSpacing={{ xs: 4, sm: 3 }}
-          >
-            {projects.map((project, index) => (
-              <ProjectCard {...project} key={`project-${index}`} />
-            ))}
-          </Grid>
+        <Grid item xs={10}>
+          <Projects />
         </Grid>
         <Grid
           item
@@ -154,6 +153,22 @@ const Home = () => {
           <strong>Contact Me!</strong>
         </Grid>
       </Grid>
+      {showChat && (
+        <Grid
+          xs={10}
+          sx={{
+            display: 'flex',
+            justifyContent: 'right',
+            position: 'fixed',
+            bottom: '0',
+            right: '32px',
+            height: '400px',
+            zIndex: 10000,
+          }}
+        >
+          <ChatBox setShowChat={setShowChat} />
+        </Grid>
+      )}
     </div>
   );
 };

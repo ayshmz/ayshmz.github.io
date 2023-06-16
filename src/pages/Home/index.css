@@ -1,19 +1,11 @@
 :root {
   --x: 0.5;
   --y: 0.5;
-  --longhand: 0deg;
-  --shorthand: 0deg;
+  height: 100vh;
 }
 
-.linklabel {
-  font-family: monospace;
-  font-size: 18px;
-  padding-top: 0px;
-}
-
-.topshelf {
-  place-content: center;
-  align-items: end;
+.home {
+  margin: '10vh 0';
 }
 
 .lefteyecat {
@@ -34,25 +26,6 @@
 .righteyeruncat {
   cx: calc(-44.905 + -8 * var(--x));
   cy: calc(18.09 + 7 * var(--y));
-}
-
-.longhand {
-  transform: rotate(var(--longhand));
-  transform-origin: 441.05px 121.05px;
-}
-
-.shorthand {
-  transform: rotate(var(--shorthand));
-  transform-origin: 441.05px 121.05px;
-}
-
-.comptext {
-  z-index: 1;
-  font-family: monospace;
-  margin-top: -40vh;
-  font-size: 2vh;
-  color: aliceblue;
-  text-align: start;
 }
 
 .sparkly {
@@ -98,4 +71,10 @@
   100% {
     color: #e87d7d;
   }
+}
+
+.experience {
+  font-size: '2.0vw';
+  line-height: '3.0vw';
+  font-family: 'Inconsolata';
 }

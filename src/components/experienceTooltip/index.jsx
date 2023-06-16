@@ -11,7 +11,6 @@ export const ExperienceToolTip = styled(({ className, ...props }) => (
     fontFamily: 'Roboto Mono',
     fontSize: '16px',
     lineHeight: '20px',
-    minWidth: '30vw',
     border: '1px solid #dadde9',
   },
 }));

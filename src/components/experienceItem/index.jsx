@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { ExperienceToolTip } from '../experienceTooltip';
 
 export const ExperienceItem = ({
@@ -23,7 +23,6 @@ export const ExperienceItem = ({
         {!moreInfo ? (
           <ExperienceToolTip
             arrow
-            moreInfo
             title={<React.Fragment>{tech}</React.Fragment>}
           >
             <div className='role'>{role}</div>
