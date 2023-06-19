@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b912edf1.css",
-    "main.js": "/static/js/main.f84007e0.js",
+    "main.js": "/static/js/main.f531d3e8.js",
     "static/media/brick-wall-painted-white.jpg": "/static/media/brick-wall-painted-white.49dbc8942c18e33cdc48.jpg",
     "static/media/bookshelf.svg": "/static/media/bookshelf.d77f7ce268fd6d717d22c9d5d536fa2f.svg",
     "static/media/cat_run.svg": "/static/media/cat_run.ee7b9be4e8d4b201b86bd046f9d63088.svg",
@@ -13,10 +13,10 @@
     "index.html": "/index.html",
     "static/media/greylightbulb.svg": "/static/media/greylightbulb.3b7f7488553ac0fc7224e813649fafe5.svg",
     "main.b912edf1.css.map": "/static/css/main.b912edf1.css.map",
-    "main.f84007e0.js.map": "/static/js/main.f84007e0.js.map"
+    "main.f531d3e8.js.map": "/static/js/main.f531d3e8.js.map"
   },
   "entrypoints": [
     "static/css/main.b912edf1.css",
-    "static/js/main.f84007e0.js"
+    "static/js/main.f531d3e8.js"
   ]
 }
