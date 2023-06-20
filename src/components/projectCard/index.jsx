@@ -19,7 +19,7 @@ export const ProjectCard = ({ title, image, description, link }) => {
           alt='project'
           image={image}
         ></CardMedia>
-        <CardContent sx={{ height: { xs: '80px', sm: '120px' } }}>
+        <CardContent sx={{ height: '120px' }}>
           <Typography gutterBottom variant='h5' component='div'>
             {title}
           </Typography>

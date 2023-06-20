@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 import { ThemeProvider } from '@mui/material/styles';
 import { InputAdornment } from '@mui/material';
-import { ReactComponent as CatSVG } from '../../assets/cat.svg';
+import { ReactComponent as CatSVG } from '../../assets/cat_right.svg';
 import { getCatGPTResponse, saveCatGPTResponse } from '../../utils/api';
 import { theme } from './index.styles';
 
