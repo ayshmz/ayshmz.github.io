@@ -12,14 +12,14 @@ import GitHub from '@mui/icons-material/GitHub';
 export const ProjectCard = ({ title, image, description, link }) => {
   return (
     <Grid item xs={10} md={4}>
-      <Card>
+      <Card sx={{ height: '350px' }}>
         <CardMedia
           sx={{ height: 140 }}
           components='img'
           alt='project'
           image={image}
         ></CardMedia>
-        <CardContent>
+        <CardContent sx={{ height: { xs: '80px', sm: '120px' } }}>
           <Typography gutterBottom variant='h5' component='div'>
             {title}
           </Typography>

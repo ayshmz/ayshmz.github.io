@@ -97,19 +97,24 @@ export const projects = [
     title: 'Cat-GPT Chatbot',
     image: '/catchatbot.png',
     description:
-      'A full stack React/NodeJS app for personal webpage featuring a cat chatbot powered by OpenAI API',
+      'The React front-end powered by Material-UI for personal webpage featuring a cat chatbot using OpenAI API',
+    type: 'project',
     link: 'https://github.com/ayshmz/ayshmz.github.io',
   },
   {
-    title: 'Some title',
-    image: '/cat.png',
+    title: 'Backend RestAPI using NodeJS and Express',
+    image: '/catchat_backend.png',
+    type: 'project',
     description:
-      'A longer Description of cool app or article that I wrote that I wrote recently',
+      'The NodeJS/Express backend using PostgreSQL for cat chatbot using OpenAI API hosted on Railway',
+    link: 'https://github.com/ayshmz/chatgptbackend',
   },
   {
-    title: 'Some title',
-    image: '/cat.png',
+    title: 'Medium Blog Post',
+    image: '/medium_chatgpt_project.png',
     description:
-      'Description of cool app or article that I wrote that I wrote recently',
+      'A blog on how I created the full stack application using ReactJS, NodeJS/Express with a PostgreSQL backend for free',
+    type: 'blog',
+    link: 'https://medium.com/@aya.shimizu/how-i-made-a-chatgpt-project-and-hosted-it-on-the-cloud-for-free-7b547312add7',
   },
 ];

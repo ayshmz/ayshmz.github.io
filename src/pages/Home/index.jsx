@@ -9,7 +9,7 @@ import { ChatBox } from '../../components/chatbox';
 import { LeftRunningCat } from '../../components/cats';
 import { leftCatAction, runCatAction } from './catActions';
 import { IconButton } from '@mui/material';
-import { LinkedIn } from '@mui/icons-material';
+import { GitHub, LinkedIn } from '@mui/icons-material';
 import './index.css';
 
 const Home = () => {
@@ -144,7 +144,7 @@ const Home = () => {
             fontFamily: 'Inconsolata',
           }}
         >
-          <strong>Projects:</strong>
+          <strong>Projects & Blog Posts:</strong>
         </Grid>
         <Grid item xs={10}>
           <Projects />
@@ -168,6 +168,9 @@ const Home = () => {
             }
           >
             <LinkedIn />
+          </IconButton>
+          <IconButton onClick={() => window.open('https://github.com/ayshmz')}>
+            <GitHub />
           </IconButton>
         </Grid>
       </Grid>
