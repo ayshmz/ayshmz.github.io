@@ -16,8 +16,8 @@ const Home = () => {
   const [text, setText] = useState('Hello!');
   const [showChat, setShowChat] = useState(false);
   const [hasBeenOpened, setHasBeenOpened] = useState(false);
+  let sessionId = window.sessionStorage.getItem('meow-session');
 
-  console.log(text);
   const pos = { x: 0, y: 0 };
   const saveCursorPosition = (x, y) => {
     pos.x = (x / window.innerWidth).toFixed(2);
@@ -60,7 +60,7 @@ const Home = () => {
             placement='left'
             title={
               <React.Fragment>
-                {!hasBeenOpened && !showChat && (
+                {!sessionId && !hasBeenOpened && !showChat && (
                   <>
                     <div>Hi I&apos;m ChestnutBot! Start a chat with me!</div>
                     <TextField
@@ -69,7 +69,6 @@ const Home = () => {
                       onChange={(event) => setText(event.target.value)}
                       onSubmit={() => {
                         setShowChat(true);
-                        setText('');
                         setHasBeenOpened(true);
                       }}
                       InputProps={{
@@ -78,8 +77,8 @@ const Home = () => {
                             <SendIcon
                               onClick={() => {
                                 setShowChat(true);
-                                setText('');
                                 setHasBeenOpened(true);
+                                console.log('send clicked...', text);
                               }}
                             />
                           </InputAdornment>
@@ -88,7 +87,7 @@ const Home = () => {
                     />
                   </>
                 )}
-                {hasBeenOpened && !showChat && (
+                {(hasBeenOpened || !!sessionId) && !showChat && (
                   <div onClick={() => setShowChat(true)}>
                     Click me to open the chat again!
                   </div>
@@ -100,9 +99,7 @@ const Home = () => {
             <CatRunSVG
               className='runcat'
               onClick={() => {
-                if (hasBeenOpened) {
-                  setShowChat(true);
-                }
+                setShowChat(true);
               }}
               style={{
                 width: '10.0vw',
@@ -166,7 +163,7 @@ const Home = () => {
             zIndex: 10000,
           }}
         >
-          <ChatBox setShowChat={setShowChat} />
+          <ChatBox setShowChat={setShowChat} textValue={text} />
         </Grid>
       )}
     </div>

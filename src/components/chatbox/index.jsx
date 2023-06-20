@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -6,102 +6,143 @@ import TextField from '@mui/material/TextField';
 import PetsIcon from '@mui/icons-material/Pets';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 import { ThemeProvider } from '@mui/material/styles';
 import { InputAdornment } from '@mui/material';
 import { ReactComponent as CatSVG } from '../../assets/cat.svg';
+import { getCatGPTResponse, saveCatGPTResponse } from '../../utils/api';
 import { theme } from './index.styles';
 
-export const ChatBox = ({ setShowChat }) => {
+export const ChatBox = ({ textValue, setShowChat }) => {
   const [currentText, setCurrentText] = useState('');
+  const [chatHistory, setChatHistory] = useState([]);
+  const [displayHelper, setDisplayHelper] = useState(false);
+  const [submit, setSubmit] = useState(false);
+  let sessionId = window.sessionStorage.getItem('meow-session');
+  // console.log('chat history in chat box', chatHistory, sessionId);
+  const fetchChat = async (id) => {
+    console.log('fetch chat has been called!', id);
+    if (id) {
+      const data = await getCatGPTResponse(sessionId);
+      if (!data.length) {
+        setDisplayHelper(true);
+      } else {
+        setDisplayHelper(false);
+        setChatHistory(data);
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log('chat history in chat box', chatHistory, sessionId);
+
+    setSubmit(false);
+
+    if (!sessionId) {
+      console.log('should be in here...', textValue);
+      sessionId = v4();
+      const saveChat = async (text) => {
+        console.log('!!!!!!!!!!! saveChat has been called', text);
+        if (text) {
+          const data = await saveCatGPTResponse({
+            prompt: text,
+            sessionId: sessionId,
+          });
+          console.log('data', data);
+          setChatHistory(data);
+        }
+      };
+      saveChat(textValue);
+      window.sessionStorage.setItem('meow-session', sessionId);
+    } else {
+      fetchChat(sessionId);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (submit) {
+      const saveChat = async (text) => {
+        console.log('!!!!!!!!!!! saveChat has been called', text);
+        if (text) {
+          const data = await saveCatGPTResponse({
+            prompt: text,
+            sessionId: sessionId,
+          });
+          console.log('data', data);
+          setChatHistory(data);
+        }
+      };
+      saveChat(currentText);
+      setCurrentText('');
+      setSubmit(false);
+    }
+  }, [submit]);
+
+  const responseMapper = () =>
+    chatHistory.map((response, index) =>
+      response.role === 'assistant' ? (
+        <Box sx={theme.catBubbleContainer} key={'cat'}>
+          <Box sx={theme.avatarContainer}>
+            <CatSVG style={theme.catIcon} />
+          </Box>
+          <Grid container>
+            <Box sx={theme.catBubble}>{response.content}</Box>
+          </Grid>
+        </Box>
+      ) : (
+        <Box sx={theme.userBubbleContainer} key={`user-${index}`}>
+          <Box sx={theme.userBubble}>{response.content}</Box>
+        </Box>
+      )
+    );
+
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={3} sx={theme.chatbox}>
         <Box sx={theme.chatboxHeaderContainer}>
-          <Grid container sx={theme.chatboxHeader}>
-            <Grid xs={9}>Chat with ChestnutBot</Grid>
-            <Grid xs={3}>
+          <Grid container spacing={2} sx={theme.chatboxHeader}>
+            <Grid item xs={9}>
+              Chat with ChestnutBot
+            </Grid>
+            <Grid item xs={3}>
               <CloseIcon onClick={() => setShowChat(false)} />
             </Grid>
           </Grid>
         </Box>
-        <Box sx={theme.chatArea}>
-          <Box sx={theme.catBubbleContainer}>
-            <Box sx={theme.avatarContainer}>
-              <CatSVG style={theme.catIcon} />
-            </Box>
-            <Grid container>
-              <Box sx={theme.catBubble}>Hellow how does this look meow?</Box>
-              <Box sx={theme.catBubbleNoTail}>
-                Hellow how does this look meow?
-              </Box>
-              <Box sx={theme.catBubbleNoTail}>
-                Hellow how does this look meow?
-              </Box>
-              <Box sx={theme.catBubbleNoTail}>
-                Hellow how does this look meow?
-              </Box>
-              <Box sx={theme.catBubbleNoTail}>
-                Hellow how does this look meow?
-              </Box>
-              <Box sx={theme.catBubbleNoTail}>
-                Hellow how does this look meow?
-              </Box>
-            </Grid>
-          </Box>
-          <Box sx={theme.catBubbleContainer}>
-            <Box sx={theme.avatarContainer}>
-              <CatSVG
-                style={{
-                  width: '24px',
-                  minWidth: '24px',
-                  height: '24px',
-                  minHeight: '24px',
-                }}
-              />
-            </Box>
-            <Grid container>
-              <Box sx={theme.catBubble}>Hellow how does this look meow?</Box>
-            </Grid>
-          </Box>
-          <Box sx={theme.userBubbleContainer}>
-            <Box sx={theme.userBubble}>I think it looks good</Box>
-          </Box>
-          <Box
-            className='input'
-            style={{
-              display: 'flex',
-              justifyContent: 'right',
-              position: 'sticky',
-              bottom: '0px',
-              right: '32px',
-            }}
-          ></Box>
-        </Box>
-        <Box sx={{ display: 'fixed' }}>
+        {displayHelper && <Box>Write something to get started!</Box>}
+        <Box sx={theme.chatArea}>{responseMapper()}</Box>
+        <Box sx={theme.textareaContainer}>
           <Box
             sx={{
-              width: '120%',
               display: 'flex',
               justifyContent: 'start',
               alignItems: 'flex-end',
-              fontFamily: 'sans-serif',
+              fontFamily: 'Dosis, sans-serif',
+              padding: 0,
             }}
           >
             <TextField
               sx={{
-                width: '290px',
+                width: '300px',
                 margin: '4px',
                 backgroundColor: 'white',
                 position: 'fixed',
                 bottom: '12px',
+                fontFamily: 'Dosis, sans-serif',
               }}
               value={currentText}
               onChange={(event) => setCurrentText(event.target.value)}
-              onSubmit={() => {}}
+              onSubmit={() => {
+                if (currentText) setSubmit(true);
+              }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position='end'>
-                    <PetsIcon />
+                    <PetsIcon
+                      onClick={() => {
+                        setSubmit(true);
+                      }}
+                    />
                   </InputAdornment>
                 ),
               }}
@@ -115,248 +156,5 @@ export const ChatBox = ({ setShowChat }) => {
 
 ChatBox.propTypes = {
   setShowChat: PropTypes.func.isRequired,
+  textValue: PropTypes.string,
 };
-
-// import React, { useState } from 'react';
-// import Paper from '@mui/material/Paper';
-// import Box from '@mui/material/Box';
-// import Grid from '@mui/material/Grid';
-// import TextField from '@mui/material/TextField';
-// import SendIcon from '@mui/icons-material/Send';
-// import CloseIcon from '@mui/icons-material/Close';
-// import PropTypes from 'prop-types';
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-// import { InputAdornment } from '@mui/material';
-// import { ReactComponent as CatSVG } from '../../assets/cat.svg';
-
-// const theme = createTheme({
-//   chatbox: {
-//     maxWidth: '300px',
-//     width: '100%',
-//     height: '400px',
-//     backgroundColor: 'aliceblue',
-//     padding: '12px',
-//     display: 'flex',
-//     marginRight: '32px',
-//     overflow: 'hidden',
-//     overflowY: 'scroll',
-//     flexDirection: 'column',
-//   },
-//   avatarContainer: {
-//     width: '36px',
-//     height: '36px',
-//     backgroundColor: 'white',
-//     border: 'px solid lightblue',
-//     borderRadius: '18px',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginRight: '12px',
-//   },
-//   userBubbleContainer: {
-//     display: 'flex',
-//     justifyContent: 'end',
-//   },
-//   userBubble: {
-//     minHeight: '14px',
-//     minWidth: '14px',
-//     height: 'fit-content',
-//     backgroundColor: 'lightblue',
-//     textAlign: 'left',
-//     position: 'relative',
-//     maxWidth: '60%',
-//     padding: '8px',
-//     borderRadius: '10px',
-//     '&:before': {
-//       content: '" "',
-//       position: 'absolute',
-//       width: '0',
-//       height: '0',
-//       borderTop: '10px solid lightblue',
-//       borderLeft: '8px solid transparent',
-//       borderRight: '8px solid transparent',
-//       top: '3px',
-//       right: '-6px',
-//     },
-//     '&:after': {
-//       content: '" "',
-//       position: 'absolute',
-//       width: '0',
-//       height: '0',
-//       borderTop: '1px solid lightblue',
-//       borderLeft: '9px solid transparent',
-//       borderRight: '9px solid transparent',
-//       top: '3px',
-//       right: '-8px',
-//     },
-//   },
-//   catBubbleContainer: {
-//     display: 'flex',
-//     marginTop: '24px',
-//     marginBottom: '24px',
-//   },
-//   catBubbleNoTail: {
-//     marginTop: '8px',
-//     minHeight: '14px',
-//     minWidth: '14px',
-//     height: 'fit-content',
-//     backgroundColor: 'orange',
-//     maxWidth: '60%',
-//     padding: '8px',
-//     borderRadius: '10px',
-//   },
-//   catBubble: {
-//     marginTop: '8px',
-//     minHeight: '14px',
-//     minWidth: '14px',
-//     height: 'fit-content',
-//     backgroundColor: 'orange',
-//     maxWidth: '60%',
-//     padding: '8px',
-//     borderRadius: '10px',
-//     position: 'relative',
-//     '&:before': {
-//       content: '" "',
-//       position: 'absolute',
-//       width: '0',
-//       height: '0',
-//       borderTop: '10px solid orange',
-//       borderLeft: '8px solid transparent',
-//       borderRight: '8px solid transparent',
-//       top: '3px',
-//       left: '-8px',
-//     },
-//     '&:after': {
-//       content: '" "',
-//       position: 'absolute',
-//       width: '0',
-//       height: '0',
-//       borderTop: '1px solid orange',
-//       borderLeft: '9px solid transparent',
-//       borderRight: '9px solid transparent',
-//       top: '3',
-//       left: '-8px',
-//     },
-//   },
-// });
-
-// export const ChatBox = ({ setShowChat }) => {
-//   const [currentText, setCurrentText] = useState('');
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <Paper elevation={3} sx={theme.chatbox}>
-//         <Grid container>
-//           <Grid item xs={12}>
-//             <Box
-//               sx={{
-//                 backgroundColor: 'white',
-//                 height: '32px',
-//                 margin: '-12px -12px 0 -12px',
-//                 border: '1px solid aliceblue',
-//                 display: 'flex',
-//                 justifyContent: 'end',
-//                 alignItems: 'center',
-//                 fontFamily: 'sans-serif',
-//               }}
-//             >
-//               <Grid
-//                 container
-//                 sx={{
-//                   display: 'flex',
-//                   justifyContent: 'flex-end',
-//                   alignItems: 'center',
-//                   textAlign: 'end',
-//                 }}
-//               >
-//                 <Grid xs={9}>Chat with ChestnutBot</Grid>
-//                 <Grid xs={3}>
-//                   <CloseIcon onClick={() => setShowChat(false)} />
-//                 </Grid>
-//               </Grid>
-//             </Box>
-//           </Grid>
-//           <Grid item xs={12}>
-//             <Box sx={theme.catBubbleContainer}>
-//               <Box sx={theme.avatarContainer}>
-//                 <CatSVG
-//                   style={{
-//                     width: '24px',
-//                     height: '24px',
-//                   }}
-//                 />
-//               </Box>
-//               <Grid container>
-//                 <Box sx={theme.catBubble}>Hellow how does this look meow?</Box>
-//                 <Box sx={theme.catBubbleNoTail}>
-//                   Hellow how does this look meow?
-//                 </Box>
-//                 <Box sx={theme.catBubbleNoTail}>
-//                   Hellow how does this look meow?
-//                 </Box>
-//               </Grid>
-//             </Box>
-//             <Box sx={theme.catBubbleContainer}>
-//               <Box sx={theme.avatarContainer}>
-//                 <CatSVG
-//                   style={{
-//                     width: '24px',
-//                     height: '24px',
-//                   }}
-//                 />
-//               </Box>
-//               <Box sx={theme.catBubble}>Hellow how does this look meow?</Box>
-//             </Box>
-//             <Box sx={theme.userBubbleContainer}>
-//               <Box sx={theme.userBubble}>I think it looks good</Box>
-//             </Box>
-//           </Grid>
-//           <Grid item xs={12}>
-//             <Box
-//               className='input'
-//               style={{
-//                 display: 'flex',
-//                 justifyContent: 'right',
-//                 position: 'sticky',
-//                 bottom: '0px',
-//                 right: '32px',
-//               }}
-//             ></Box>
-//             <Box
-//               sx={{
-//                 width: '120%',
-//                 display: 'flex',
-//                 justifyContent: 'start',
-//                 alignItems: 'flex-end',
-//                 fontFamily: 'sans-serif',
-//               }}
-//             >
-//               <TextField
-//                 sx={{
-//                   width: '290px',
-//                   margin: '4px',
-//                   backgroundColor: 'white',
-//                   position: 'fixed',
-//                   bottom: '12px',
-//                 }}
-//                 value={currentText}
-//                 onChange={(event) => setCurrentText(event.target.value)}
-//                 onSubmit={() => {}}
-//                 InputProps={{
-//                   endAdornment: (
-//                     <InputAdornment position='end'>
-//                       <SendIcon />
-//                     </InputAdornment>
-//                   ),
-//                 }}
-//               />
-//             </Box>
-//           </Grid>
-//         </Grid>
-//       </Paper>
-//     </ThemeProvider>
-//   );
-// };
-
-// ChatBox.propTypes = {
-//   setShowChat: PropTypes.func.isRequired,
-// };

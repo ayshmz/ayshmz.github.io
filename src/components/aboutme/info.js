@@ -27,7 +27,7 @@ export const experienceInfo = [
       'SaaSified the claims platform to handle intake and display of data for multiple clients each with its own release schedule',
   },
   {
-    start: '2018',
+    start: '2019',
     end: '2022',
     role: 'Full Stack Software Engineer',
     employer: 'Liberty Mutual Insurance',
@@ -36,7 +36,15 @@ export const experienceInfo = [
       'Worked with data scientists to predict and assist customer choice using machine learning models and AB Tested model on production',
   },
   {
-    start: '2018',
+    start: 'Summer 2018',
+    role: 'TechStart Full Stack Intern',
+    employer: 'Liberty Mutual Insurance',
+    tech: 'JavaScript, React, NodeJS, Express, Java, Kotlin, SpringBoot, AWS Gateway, AWS Lambda, MongoDB, DynamoDB, Git, Splunk, Bamboo',
+    description:
+      'Developed an AB Testing platform consisting of seven applications and microservices to collect data and display a summary of customer interactions on the production website for product stakeholders',
+  },
+  {
+    start: 'Spring 2018',
     role: 'Machine Learning Research Assistant',
     employer: 'Boston University',
     tech: 'Python, Scikit Learn, Tensorflow, SciPy, MATLAB',
@@ -44,7 +52,7 @@ export const experienceInfo = [
       'Ran multiple machine learning algorithms to find directional relationships between government-owned news sources and entity-owned news sources',
   },
   {
-    start: '2018',
+    start: 'Spring 2018',
     role: 'Co-op Individual Contributor',
     employer: 'Armored Things',
     tech: 'Java, Android Studio, Git, MongoDB, FireBase',
@@ -73,9 +81,11 @@ export const experienceInfo = [
 
 export const projects = [
   {
-    title: 'Some title',
-    image: '/cat.png',
-    description: 'description',
+    title: 'Cat-GPT Chatbot',
+    image: '/catchatbot.png',
+    description:
+      'A full stack React/NodeJS app for personal webpage featuring a cat chatbot powered by OpenAI API',
+    link: 'https://github.com/ayshmz/ayshmz.github.io',
   },
   {
     title: 'Some title',

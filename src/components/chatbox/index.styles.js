@@ -5,11 +5,11 @@ export const theme = createTheme({
     fontFamily: 'Dosis, sans-serif',
     maxWidth: '310px',
     width: '100%',
+    minWidth: '310px',
     height: '400px',
     backgroundColor: 'aliceblue',
     padding: '12px',
     display: 'flex',
-    marginRight: '32px',
     overflow: 'hidden',
     overflowY: 'scroll',
     flexDirection: 'column',
@@ -17,21 +17,20 @@ export const theme = createTheme({
   },
   chatboxHeaderContainer: {
     backgroundColor: '#81d4fa',
-    height: '32px',
+    height: '36px',
     margin: '-12px -12px 0 -12px',
     border: '1px solid #81d4fa',
-    display: 'sticky',
+    display: 'flex',
+    justifyContent: 'space-evenly',
     padding: '',
     alignItems: 'center',
-    fontFamily: 'sans-serif',
+    fontFamily: 'Dosis, sans-serif',
   },
   chatboxHeader: {
     display: 'flex',
-    alignItems: 'center',
-    justifyItems: 'center',
-    justifySelf: 'center',
     textAlign: 'end',
     height: '100%',
+    width: '100%',
   },
   chatArea: {
     display: 'block',
@@ -64,6 +63,7 @@ export const theme = createTheme({
   userBubbleContainer: {
     display: 'flex',
     justifyContent: 'end',
+    marginTop: '12px',
   },
   userBubble: {
     minHeight: '14px',
@@ -101,8 +101,7 @@ export const theme = createTheme({
   },
   catBubbleContainer: {
     display: 'flex',
-    marginTop: '24px',
-    marginBottom: '24px',
+    marginTop: '12px',
   },
   catBubbleNoTail: {
     marginTop: '8px',
@@ -115,7 +114,7 @@ export const theme = createTheme({
     borderRadius: '10px',
   },
   catBubble: {
-    marginTop: '8px',
+    marginTop: '4px',
     minHeight: '14px',
     minWidth: '14px',
     height: 'fit-content',
@@ -147,4 +146,5 @@ export const theme = createTheme({
       left: '-8px',
     },
   },
+  textareaContainer: { display: 'fixed', width: '120%' },
 });
