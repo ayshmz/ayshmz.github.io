@@ -2,10 +2,7 @@ export const leftCatAction = {
   scrollY: {
     translateX: [
       ['elInY', 'elOutY'],
-      [4100, -50],
-      {
-        inertia: 10,
-      },
+      ['2*screenWidth/3', '0'],
     ],
   },
 };

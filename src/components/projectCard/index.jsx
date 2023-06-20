@@ -11,7 +11,7 @@ import GitHub from '@mui/icons-material/GitHub';
 
 export const ProjectCard = ({ title, image, description, link }) => {
   return (
-    <Grid item xs={3}>
+    <Grid item xs={10} md={4}>
       <Card>
         <CardMedia
           sx={{ height: 140 }}
@@ -44,5 +44,5 @@ ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
 };

@@ -19,9 +19,7 @@ export const ChatBox = ({ textValue, setShowChat }) => {
   const [displayHelper, setDisplayHelper] = useState(false);
   const [submit, setSubmit] = useState(false);
   let sessionId = window.sessionStorage.getItem('meow-session');
-  // console.log('chat history in chat box', chatHistory, sessionId);
   const fetchChat = async (id) => {
-    console.log('fetch chat has been called!', id);
     if (id) {
       const data = await getCatGPTResponse(sessionId);
       if (!data.length) {
@@ -34,21 +32,16 @@ export const ChatBox = ({ textValue, setShowChat }) => {
   };
 
   useEffect(() => {
-    console.log('chat history in chat box', chatHistory, sessionId);
-
     setSubmit(false);
 
     if (!sessionId) {
-      console.log('should be in here...', textValue);
       sessionId = v4();
       const saveChat = async (text) => {
-        console.log('!!!!!!!!!!! saveChat has been called', text);
         if (text) {
           const data = await saveCatGPTResponse({
             prompt: text,
             sessionId: sessionId,
           });
-          console.log('data', data);
           setChatHistory(data);
         }
       };
@@ -62,13 +55,11 @@ export const ChatBox = ({ textValue, setShowChat }) => {
   useEffect(() => {
     if (submit) {
       const saveChat = async (text) => {
-        console.log('!!!!!!!!!!! saveChat has been called', text);
         if (text) {
           const data = await saveCatGPTResponse({
             prompt: text,
             sessionId: sessionId,
           });
-          console.log('data', data);
           setChatHistory(data);
         }
       };
@@ -109,8 +100,15 @@ export const ChatBox = ({ textValue, setShowChat }) => {
             </Grid>
           </Grid>
         </Box>
-        {displayHelper && <Box>Write something to get started!</Box>}
-        <Box sx={theme.chatArea}>{responseMapper()}</Box>
+        <Box sx={theme.chatArea}>
+          <Box>
+            {displayHelper && 'Write something to get started!'} *This
+            interaction may be used as part of another project. If you
+            don&apos;t want your interactions to be used, please do not use this
+            chatbot.
+          </Box>
+          {responseMapper()}
+        </Box>
         <Box sx={theme.textareaContainer}>
           <Box
             sx={{

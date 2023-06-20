@@ -1,18 +1,31 @@
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 export const aboutMeText = (
   <>
     Hi, I&apos;m <strong>Aya</strong>. I&apos;m a full stack engineer who likes
     to solve problems and{' '}
-    <p
+    <TypeAnimation
+      sequence={[
+        // Same substring at the start will only be typed once, initially
+        'create reliable SaaS software powered by ML/AI.',
+        2000,
+        'develop seamless and secure full stack applications using React.',
+        2000,
+        'facilitate agile practices to increase team productivity and efficiency.',
+        2000,
+        'continuously learn new technologies and develop meaningful applications.',
+        2000,
+      ]}
+      omitDeletionAnimation
+      speed={20}
       style={{
         display: 'inline',
         color: 'blueviolet',
         animation: 'rainbow-text 10s infinite',
       }}
-    >
-      create reliable SaaS software powered by ML/AI.
-    </p>
+      repeat={Infinity}
+    />
   </>
 );
 
@@ -90,11 +103,13 @@ export const projects = [
   {
     title: 'Some title',
     image: '/cat.png',
-    description: 'description',
+    description:
+      'A longer Description of cool app or article that I wrote that I wrote recently',
   },
   {
     title: 'Some title',
     image: '/cat.png',
-    description: 'description',
+    description:
+      'Description of cool app or article that I wrote that I wrote recently',
   },
 ];

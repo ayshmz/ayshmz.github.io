@@ -16,26 +16,42 @@ export const ExperienceItem = ({
   if (!end) years = start;
   return (
     <>
-      <Grid item xs={2}>
+      <Grid item xs={10} sm={2}>
         <div>{years}</div>
       </Grid>
-      <Grid item xs={6} onClick={() => setMoreInfo(!moreInfo)}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        sx={{
+          paddingLeft: { xs: '32px', sm: 0 },
+        }}
+        onClick={() => setMoreInfo(!moreInfo)}
+      >
         {!moreInfo ? (
           <ExperienceToolTip
             arrow
             title={<React.Fragment>{tech}</React.Fragment>}
           >
-            <div className='role'>{role}</div>
+            <Grid
+              item
+              className='role'
+              sx={{ lineHeight: { xs: '3.5vh', sm: '2.5vw' } }}
+            >
+              {role}
+            </Grid>
           </ExperienceToolTip>
         ) : (
-          <div className='role'>{role}</div>
+          <Grid item className='role'>
+            {role}
+          </Grid>
         )}
       </Grid>
-      <Grid item xs={4}>
+      <Grid item sm={4} sx={{ paddingLeft: { xs: '32px', sm: 0 } }}>
         <div>{employer}</div>
       </Grid>
       {moreInfo && (
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ lineHeight: { xs: '3.5vh', sm: 0 } }}>
           <strong>{description}</strong>
         </Grid>
       )}
