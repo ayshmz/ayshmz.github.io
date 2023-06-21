@@ -36,7 +36,7 @@ export const ExperienceItem = ({
             <Grid
               item
               className='role'
-              sx={{ lineHeight: { xs: '3.5vh', sm: '2.5vw' } }}
+              sx={{ lineHeight: { xs: '3.5vh', sm: '3.0vw' } }}
             >
               {role}
             </Grid>
@@ -51,7 +51,7 @@ export const ExperienceItem = ({
         <div>{employer}</div>
       </Grid>
       {moreInfo && (
-        <Grid item xs={12} sx={{ lineHeight: { xs: '3.5vh', sm: 0 } }}>
+        <Grid item xs={12} sx={{ lineHeight: { xs: '3.5vh', sm: '3.0vw' } }}>
           <strong>{description}</strong>
         </Grid>
       )}

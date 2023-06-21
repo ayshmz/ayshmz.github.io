@@ -94,7 +94,7 @@ export const experienceInfo = [
 
 export const projects = [
   {
-    title: 'Cat-GPT Chatbot',
+    title: 'C(h)at-GPT Chatbot React FrontEnd',
     image: '/catchatbot.png',
     description:
       'The React front-end powered by Material-UI for personal webpage featuring a cat chatbot using OpenAI API',
@@ -110,7 +110,7 @@ export const projects = [
     link: 'https://github.com/ayshmz/chatgptbackend',
   },
   {
-    title: 'Medium Blog Post',
+    title: 'Medium Blog Post on ChatGPT',
     image: '/medium_chatgpt_project.png',
     description:
       'A blog on how I created the full stack application using ReactJS, NodeJS/Express with a PostgreSQL backend for free',

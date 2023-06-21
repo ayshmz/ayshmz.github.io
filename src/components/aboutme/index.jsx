@@ -12,7 +12,7 @@ export const Experiences = () => (
     rowSpacing={3}
     sx={{
       fontSize: { xs: '3.0vh', sm: '2.0vw' },
-      lineHeight: { xs: '3.5vh', sm: '2.5vw' },
+      lineHeight: { xs: '3.5vh', sm: '3.0vw' },
       fontFamily: 'Inconsolata',
     }}
   >
