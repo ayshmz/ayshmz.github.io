@@ -173,6 +173,7 @@ export const ChatBox = ({ textValue, setShowChat }) => {
             }}
           >
             <TextField
+              aria-label='text-field'
               sx={{
                 width: '300px',
                 margin: '4px',
@@ -192,16 +193,17 @@ export const ChatBox = ({ textValue, setShowChat }) => {
               onKeyDown={(ev) => {
                 console.log(`Pressed keyCode ${ev.key}`);
                 if (ev.key === 'Enter') {
-                  // Do code here
                   setSubmit(true);
                   setLoading(true);
                   ev.preventDefault();
                 }
               }}
               InputProps={{
+                'aria-label': 'chat-input',
                 endAdornment: (
                   <InputAdornment position='end'>
                     <PetsIcon
+                      aria-label='submit'
                       onClick={() => {
                         setSubmit(true);
                       }}

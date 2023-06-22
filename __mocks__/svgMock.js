@@ -1,0 +1,2 @@
+// svgMock.js
+module.exports = {};
