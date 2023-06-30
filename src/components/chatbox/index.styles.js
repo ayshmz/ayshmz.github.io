@@ -76,6 +76,7 @@ export const theme = createTheme({
     padding: '8px',
     marginRight: '12px',
     borderRadius: '10px',
+    overflowWrap: 'anywhere',
     '&:before': {
       content: '" "',
       position: 'absolute',

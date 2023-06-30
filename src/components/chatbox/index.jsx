@@ -198,6 +198,7 @@ export const ChatBox = ({ textValue, setShowChat }) => {
                   ev.preventDefault();
                 }
               }}
+              inputProps={{ maxLength: 50 }}
               InputProps={{
                 'aria-label': 'chat-input',
                 endAdornment: (
