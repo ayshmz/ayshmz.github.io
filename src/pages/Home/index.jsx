@@ -79,7 +79,7 @@ const Home = () => {
               <React.Fragment>
                 {!sessionId && !hasBeenOpened && !showChat && (
                   <>
-                    <React.Fragment
+                    <div
                       onClick={() => {
                         setHasBeenOpened(true);
                         setShowChat(true);
@@ -87,7 +87,7 @@ const Home = () => {
                     >
                       Hi I&apos;m ChestnutBot! Click on me to start a chat with
                       me!
-                    </React.Fragment>
+                    </div>
                   </>
                 )}
                 {(hasBeenOpened || !!sessionId) && !showChat && (

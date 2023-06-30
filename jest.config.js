@@ -91,6 +91,8 @@ module.exports = {
 
   moduleNameMapper: {
     '^.+\\.svg$': '<rootDir>/__mocks__/svgMock.js',
+    '^.+\\.jpg$': '<rootDir>/__mocks__/svgMock.js',
+    '^.+\\.css$': '<rootDir>/__mocks__/svgMock.js',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
