@@ -31,8 +31,16 @@ export const aboutMeText = (
 
 export const experienceInfo = [
   {
+    start: '2023',
+    end: 'now',
+    role: 'Senior Development Software Engineer',
+    employer: 'CarGurus',
+    tech: 'JavaScript',
+    description: 'Check back for updates!',
+  },
+  {
     start: '2022',
-    end: 'Now',
+    end: '2023',
     role: 'Senior Software Engineer',
     employer: 'Haven Technologies',
     tech: 'TypeScript, React, NodeJS, Express, PostgreSQL, Gitlab, AWS S3, Docker, Kubernetes, Splunk',
