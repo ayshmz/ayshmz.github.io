@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="200px" height="325px" version="1.1" viewBox="0 0 200 325" xmlns="http://www.w3.org/2000/svg">
- <rect x="93.737" y="-.12578" width="14.56" height="264.34" ry="1.2687" fill="#de8787" fill-rule="evenodd" stroke-width=".24895"/>
- <ellipse cx="101" cy="287.28" rx="18.201" ry="12.854" fill="#c8c4b7" fill-rule="evenodd" stroke-width=".34952"/>
- <path transform="matrix(2.771 .0018242 -.043994 .61073 -96.84 123.3)" d="m100.68 266.8-49.743 1.0326 23.977-43.595z" fill="#de8787" opacity=".94"/>
-</svg>
